@@ -19,7 +19,7 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     ? String(inputElements[1].value)
     : "";
   let valorIdade = inputElements[2].value ? inputElements[2].value : 0;
-  let valorSexo = inputElements[3].value ? inputElements[3].value : true;
+  let valorSexo = inputElements[3].value ? inputElements[3].value : "F";
   let valorMedia = Number(inputElements[4].value)
     ? Number(inputElements[4].value)
     : 0;
@@ -29,7 +29,7 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     nome: valorNome,
     RA: valorRA,
     idade: valorIdade,
-    sexo: valorSexo,
+    sexo: valorSexo === "F" ? "FEMININO" : "MASCULINO",
     media: valorMedia,
     resultado: valorMedia > 6 ? true : false, // Media > 6 = aprovado; media < 6 = não aprovado
   });
