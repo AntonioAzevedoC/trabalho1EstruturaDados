@@ -5,27 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Alunos</title>
     <!-- SCRIPT -->
-    <script defer src="js/cadastro.js"></script>
+    <script defer type="module" src="js/cadastro.mjs"></script>
   </head>
   <body>
     <!-- SEÇÃO DE CADASTRO DE ALUNOS -->
     <div class="__secao-cadastro">
       <!-- CADASTRO NOME -->
-      <input class="__input-el" value="nome" />
+      <label for="__input-nome" class="__label" id="__lbl-input-nome"
+        >Nome Aluno:</label
+      >
+      <input class="__input-el" id="__input-nome" value="nome" />
       <!-- CADASTRO RA -->
-      <input class="__input-el" value="8374918372" />
+      <label for="__input-RA" class="__label" id="__lbl-input-RA">RA: </label>
+      <input class="__input-el" id="__input-RA" value="8374918372" />
       <!-- CADASTRO IDADE -->
-      <input class="__input-el" value="12" />
+      <label for="__input-idade" class="__label" id="__lbl-input-idade"
+        >Idade Aluno:</label
+      >
+      <input class="__input-el" id="__input-idade" value="12" />
       <!-- CADASTRO SEXO -->
-      <input class="__input-el" value="M" />
+      <label for="__input-sexo" class="__label" id="__lbl-input-sexo"
+        >Sexo:</label
+      >
+      <input class="__input-el" id="__input-sexo" value="M" />
       <!-- CADASTRO MEDIA -->
-      <input class="__input-el" value="5" />
+      <label for="__input-media" class="__label" id="__lbl-input-media"
+        >Media:</label
+      >
+      <input class="__input-el" id="__input-media" value="5" />
       <!-- BOTÃO PARA ADICIONAR ALUNO -->
-      <button class="__input-btn"></button>
+      <button class="__input-btn">Enviar</button>
     </div>
     <!-- OPÇÕES DE RELATÓRIO -->
-    <div class="__opcoes-relatorio"></div>
+    <div class="__opcoes-relatorio">
+      <select name="__organizar" class="__select-organizacao"></select>
+    </div>
     <!-- TABELA DE RELATÓRIO DE  ALUNOS -->
-    <table class="__tabela-relatorio"></table>
+    <table class="__tabela-relatorio" id="__tabela">
+      <!-- Títulos das colunas -->
+      <tr>
+        <th>NOME</th>
+        <th>RA</th>
+        <th>IDADE</th>
+        <th>SEXO</th>
+        <th>MEDIA</th>
+        <th>SITUAÇÃO</th>
+      </tr>
+    </table>
   </body>
 </html>

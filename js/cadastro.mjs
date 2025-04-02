@@ -1,19 +1,16 @@
 "use strict";
 
-// Array de dados principal
-let arrDados = [
-  {
-    nome: "Pedro Santos Nogueira", // Nome - string (passar .toUppercase())
-    RA: "13649138726941782", // RA - string (transformar número em string)
-    idade: 26, // idade - número
-    sexo: true, // sexo = boolean (F = true, M = false)
-    media: 7.3, // media = número (manter número para fazer calculos)
-    resultado: true, // resultado = boolean (media > 6 ? true : false)
-  },
-];
+// Importando array de dados principal
+import { arrDados } from "./dados.mjs";
 
+// Importando função de atualizar tabela
+import atualizarTabela from "./tabela.mjs";
+
+// Função para lidar com envio de dados em cadastro de aluno
 document.querySelector(".__input-btn").addEventListener("click", function () {
-  inputElements = Array.from(document.querySelectorAll(".__input-el"));
+  // Selecionando valores de input
+  let inputElements = Array.from(document.querySelectorAll(".__input-el"));
+
   // Validação básica caso dados estejam vazios
   let valorNome = inputElements[0].value.toUpperCase()
     ? inputElements[0].value.toUpperCase()
@@ -37,4 +34,5 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     resultado: valorMedia > 6 ? true : false, // Media > 6 = aprovado; media < 6 = não aprovado
   });
   console.log(arrDados);
+  atualizarTabela(arrDados);
 });
