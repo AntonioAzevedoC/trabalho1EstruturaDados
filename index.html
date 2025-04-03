@@ -6,6 +6,7 @@
     <title>Cadastro de Alunos</title>
     <!-- SCRIPT -->
     <script defer type="module" src="js/cadastro.mjs"></script>
+    <script defer type="module" src="js/organizar.mjs"></script>
   </head>
   <body>
     <!-- SEÇÃO DE CADASTRO DE ALUNOS -->
@@ -39,13 +40,43 @@
       <!-- BOTÃO PARA ADICIONAR ALUNO -->
       <button class="__input-btn">Enviar</button>
     </div>
-    <!-- OPÇÕES DE RELATÓRIO -->
+
+    <!-- OPÇÕES DE ORDENAÇÃO DE RELATÓRIO -->
     <div class="__opcoes-relatorio">
-      <select name="__organizar" class="__select-organizacao"></select>
+      <!-- SELECT PARA ORDENAÇÃO DE FORMA DECRESCENTE OU CRESCENTE, POR RA OU NOME -->
+      <label for="__select-ordem" class="__label" id="__lbl-input-ordem"
+        >Ordenação Relatório:
+      </label>
+      <select
+        id="__select-ordem"
+        name="__organizar"
+        class="__select-organizacao"
+      >
+        <option value="Cresc-Nome">Crescente por Nome</option>
+        <option value="Cresc-RA">Crescente por RA</option>
+        <option value="Decresc-Nome">Decrescente por Nome</option>
+        <option value="Decresc-RA">Decrescente por RA</option>
+      </select>
+      <!-- SELECT PARA MOSTRAR APENAS APROVADOS, APENAS REPROVADOS E AMBOS -->
+      <label for="__select-aprov" class="__label" id="__lbl-input-ordem"
+        >Situação Alunos:
+      </label>
+      <select
+        id="__select-aprov"
+        name="__organizar"
+        class="__select-organizacao"
+      >
+        <option value="Aprovados">Apenas Aprovado</option>
+        <option value="Reprovados">Apenas Reprovados</option>
+        <option value="Ambos" selected>Ambos</option>
+      </select>
+      <!-- BOTÃO PARA ORGANIZAR TABELA -->
+      <button class="__botao-organizar">Organizar</button>
     </div>
+
     <!-- TABELA DE RELATÓRIO DE  ALUNOS -->
     <table class="__tabela-relatorio" id="__tabela">
-      <!-- Títulos das colunas -->
+      <!-- TÍTULOS DAS COLUNAS -->
       <tr>
         <th>NOME</th>
         <th>RA</th>
@@ -54,7 +85,7 @@
         <th>MEDIA</th>
         <th>SITUAÇÃO</th>
       </tr>
-      <!-- Dados da tabela são adicionados dinameicamente abaixo -->
+      <!-- DADOS DA TABELA SÃO ADICIONADOS DINAMICAMENTE ABAIXO -->
     </table>
   </body>
 </html>

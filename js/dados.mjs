@@ -9,4 +9,37 @@
 //   media: 7.3, // media = número (manter número para fazer calculos)
 //   resultado: true, // resultado = boolean (media > 6 ? true : false)
 // },
-export const arrDados = [];
+export const arrDados = [
+  {
+    nome: "Pedro",
+    RA: "2",
+    idade: 26,
+    sexo: true,
+    media: 7.3,
+    resultado: true,
+  },
+  {
+    nome: "Marina",
+    RA: "5",
+    idade: 26,
+    sexo: true,
+    media: 7.3,
+    resultado: false,
+  },
+  {
+    nome: "Breno",
+    RA: "9",
+    idade: 26,
+    sexo: true,
+    media: 7.3,
+    resultado: true,
+  },
+  {
+    nome: "Antonio",
+    RA: "1",
+    idade: 26,
+    sexo: true,
+    media: 7.3,
+    resultado: false,
+  },
+];

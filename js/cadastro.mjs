@@ -34,5 +34,4 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     resultado: valorMedia > 6 ? true : false, // Media > 6 = aprovado; media < 6 = não aprovado
   });
   console.log(arrDados);
-  atualizarTabela(arrDados);
 });
