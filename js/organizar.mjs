@@ -1,11 +1,13 @@
 "use strict";
 
 // Importando array de dados principal
-import { arrDados } from "./dados.mjs";
+import { arrAlunos } from "./dados.mjs";
+import { ultimoSort } from "./dados.mjs";
 
 // Importando função de atualizar tabela
 import atualizarTabela from "./tabela.mjs";
 
+// Selecionando elemento .__botao-organizar
 const botaoOrganizar = document.querySelector(".__botao-organizar");
 
 // Função Quick-sort para ordenar array que será inserida na tabela
@@ -41,31 +43,48 @@ const quickSortNomeDecrescente = (el1, el2) => el1.nome > el2.nome;
 const quickSortRaCrescente = (el1, el2) => el1.RA < el2.RA;
 const quickSortRaDecrescente = (el1, el2) => el1.RA > el2.RA;
 
-// let quickSortNome function (arrDados, (el1, el2) => el1.nome < el2.nome);
+// Função para chamada de funções de organização
+export const ChamadaOrganizacao = function (e, ordem = "", situacao = "") {
+  let selectOrdem =
+    ordem === "" ? document.querySelector("#__select-ordem").value : ordem;
+  let arrOrdem = selectOrdem.split("-");
 
-// Evento para clique de botão organizar e chamada de função organizar
-botaoOrganizar.addEventListener("click", function () {
-  //   console.log(selectOrdem.value.split("-"), selectSituacao.value);
-  let selectSituacao = document.querySelector("#__select-aprov").value;
-  let selectOrdem = document.querySelector("#__select-ordem");
-  selectOrdem = selectOrdem.value.split("-");
-  console.log(selectSituacao.value);
+  let selectSituacao =
+    situacao === ""
+      ? document.querySelector("#__select-aprov").value
+      : situacao;
 
-  let cresc = selectOrdem[0];
-  let tipo = selectOrdem[1];
+  let cresc = arrOrdem[0];
+  let tipo = arrOrdem[1];
 
+  // Definindo que tipo de organização deve ser feita
   if (cresc === "Cresc" && tipo === "Nome")
-    quickSort(arrDados, quickSortNomeCrescente);
+    // Crescente por nome
+    quickSort(arrAlunos, quickSortNomeCrescente);
   else if (cresc === "Decresc" && tipo === "Nome")
-    quickSort(arrDados, quickSortNomeDecrescente);
+    // Decrescente por nome
+    quickSort(arrAlunos, quickSortNomeDecrescente);
   else if (cresc === "Cresc" && tipo === "RA")
-    quickSort(arrDados, quickSortRaCrescente);
+    // Crescente por RA
+    quickSort(arrAlunos, quickSortRaCrescente);
   else if (cresc === "Decresc" && tipo === "RA")
-    quickSort(arrDados, quickSortRaDecrescente);
+    // Decrescente por RA
+    quickSort(arrAlunos, quickSortRaDecrescente);
 
-  if (selectSituacao === "Ambos") atualizarTabela(arrDados);
+  // Filtrando por aprovação
+  if (selectSituacao === "Ambos") atualizarTabela(arrAlunos);
   else if (selectSituacao === "Aprovados")
-    atualizarTabela(arrDados.filter((a) => a.resultado === true));
+    atualizarTabela(arrAlunos.filter((a) => a.resultado === true));
   else if (selectSituacao === "Reprovados")
-    atualizarTabela(arrDados.filter((a) => a.resultado === false));
-});
+    atualizarTabela(arrAlunos.filter((a) => a.resultado === false));
+
+  // Atualizando dados da última organização feita
+  console.log("a", selectOrdem, "b", selectSituacao);
+
+  ultimoSort.push(selectOrdem, selectSituacao);
+  ultimoSort.splice(0, 2);
+  console.log(ultimoSort);
+};
+
+// Evento para clique de botão organizar chamando "chamadaOrganizacao"
+botaoOrganizar.addEventListener("click", ChamadaOrganizacao);

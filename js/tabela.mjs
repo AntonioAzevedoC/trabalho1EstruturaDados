@@ -1,6 +1,6 @@
 "use strict";
 
-import { arrDados } from "./dados.mjs";
+import { arrAlunos } from "./dados.mjs";
 
 const tabela = document.getElementById("__tabela");
 

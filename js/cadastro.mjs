@@ -1,10 +1,10 @@
 "use strict";
 
 // Importando array de dados principal
-import { arrDados } from "./dados.mjs";
+import { arrAlunos } from "./dados.mjs";
+import { ultimoSort } from "./dados.mjs";
 
-// Importando função de atualizar tabela
-import atualizarTabela from "./tabela.mjs";
+import { ChamadaOrganizacao } from "./organizar.mjs";
 
 // Função para lidar com envio de dados em cadastro de aluno
 document.querySelector(".__input-btn").addEventListener("click", function () {
@@ -15,9 +15,9 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
   let valorNome = inputElements[0].value.toUpperCase()
     ? inputElements[0].value.toUpperCase()
     : "";
-  let valorRA = String(inputElements[1].value)
-    ? String(inputElements[1].value)
-    : "";
+  let valorRA = Number(inputElements[1].value)
+    ? Number(inputElements[1].value)
+    : 0;
   let valorIdade = inputElements[2].value ? inputElements[2].value : 0;
   let valorSexo = inputElements[3].value ? inputElements[3].value : "F";
   let valorMedia = Number(inputElements[4].value)
@@ -25,7 +25,7 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     : 0;
 
   // Inserindo dados no array
-  arrDados.push({
+  arrAlunos.push({
     nome: valorNome,
     RA: valorRA,
     idade: valorIdade,
@@ -33,5 +33,9 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
     media: valorMedia,
     resultado: valorMedia > 6 ? true : false, // Media > 6 = aprovado; media < 6 = não aprovado
   });
-  console.log(arrDados);
+
+  // console.log(...ultimoSort);/
+  console.log(arrAlunos);
+
+  ChamadaOrganizacao("e", ...ultimoSort);
 });
