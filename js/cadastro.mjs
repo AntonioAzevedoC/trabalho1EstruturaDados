@@ -1,9 +1,10 @@
 "use strict";
 
-// Importando array de dados principal
+// Importando array de dados principais
 import { arrAlunos } from "./dados.mjs";
 import { ultimoSort } from "./dados.mjs";
 
+// Importando função para chamar organização da lista
 import { ChamadaOrganizacao } from "./organizar.mjs";
 
 // Função para lidar com envio de dados em cadastro de aluno
@@ -23,6 +24,11 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
   let valorMedia = Number(inputElements[4].value)
     ? Number(inputElements[4].value)
     : 0;
+
+  // Limpando campos de imput
+  for (const el of inputElements) {
+    el.value = "";
+  }
 
   // Inserindo dados no array
   arrAlunos.push({

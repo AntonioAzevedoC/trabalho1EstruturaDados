@@ -40,8 +40,8 @@ const quickSort = function (arr, fnComp, inicio = 0, fim = arr.length - 1) {
 // Funções para serem inseridas no quick-sort
 const quickSortNomeCrescente = (el1, el2) => el1.nome < el2.nome;
 const quickSortNomeDecrescente = (el1, el2) => el1.nome > el2.nome;
-const quickSortRaCrescente = (el1, el2) => el1.RA < el2.RA;
-const quickSortRaDecrescente = (el1, el2) => el1.RA > el2.RA;
+const quickSortRaCrescente = (el1, el2) => +el1.RA < +el2.RA;
+const quickSortRaDecrescente = (el1, el2) => +el1.RA > +el2.RA;
 
 // Função para chamada de funções de organização
 export const ChamadaOrganizacao = function (e, ordem = "", situacao = "") {
@@ -78,12 +78,12 @@ export const ChamadaOrganizacao = function (e, ordem = "", situacao = "") {
   else if (selectSituacao === "Reprovados")
     atualizarTabela(arrAlunos.filter((a) => a.resultado === false));
 
-  // Atualizando dados da última organização feita
-  console.log("a", selectOrdem, "b", selectSituacao);
+  // // Atualizando dados da última organização feita
+  // console.log("a", selectOrdem, "b", selectSituacao);
 
   ultimoSort.push(selectOrdem, selectSituacao);
   ultimoSort.splice(0, 2);
-  console.log(ultimoSort);
+  // console.log(ultimoSort);
 };
 
 // Evento para clique de botão organizar chamando "chamadaOrganizacao"
