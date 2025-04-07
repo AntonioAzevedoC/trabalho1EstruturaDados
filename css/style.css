@@ -1,4 +1,4 @@
-/* Accessible Student Management System */
+/* Accessible Student Management System - Side-by-Side Layout */
 :root {
   /* Color Palette */
   --purple-dark: #4b0082; /* AA compliant on white */
@@ -13,33 +13,38 @@
   /* Status Colors */
   --approved: #2e7d32; /* Green */
   --reproved: #c62828; /* Red */
-  --warning: #ff8f00; /* Orange */
 }
 
-/* Base Styles */
+/* Base Layout */
 body {
   font-family: "Segoe UI", Roboto, -apple-system, sans-serif;
   line-height: 1.6;
   color: var(--grey-dark);
   background-color: var(--grey-very-light);
   padding: 1rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-}
-
-/* Main Container */
-.__entrada-dados {
   display: grid;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+  align-items: start;
 }
 
-/* Form Sections */
+/* Left Column - Form Section */
+.__entrada-dados {
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Form Containers */
 .__secao-cadastro,
 .__opcoes-relatorio {
   background: white;
-  border-radius: 4px;
-  padding: 0.5rem;
+  border-radius: 8px;
+  padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--grey-light);
 }
@@ -47,22 +52,35 @@ body {
 /* Form Elements */
 .__label {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   font-weight: 600;
   color: var(--purple-dark);
   font-size: 0.95rem;
 }
 
-.__input-el,
-.__select-organizacao {
+/* Unified input and select styles */
+.__select-organizacao,
+.__input-el {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 0.4rem;
+  max-width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
   border: 2px solid var(--grey-light);
   border-radius: 6px;
   font-size: 1rem;
   transition: all 0.2s ease;
-  max-width: 400px;
+  box-sizing: border-box; /* This is the key fix */
+}
+
+/* Specific select element adjustments */
+.__select-organizacao,
+select.__input-el {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a0dad'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem; /* Extra padding for dropdown arrow */
 }
 
 .__input-el:focus,
@@ -78,13 +96,14 @@ body {
   background-color: var(--purple-medium);
   color: white;
   border: none;
-  padding: 0.65rem 1.75rem;
+  padding: 0.85rem 1.75rem;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
+  width: 100%;
 }
 
 .__input-btn:hover,
@@ -96,13 +115,13 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Table Styles */
+/* Right Column - Table Section */
 .__tabela-relatorio {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   background: white;
+  margin-top: 0;
 }
 
 .__tabela-relatorio th {
@@ -143,29 +162,17 @@ body {
 }
 
 /* Responsive Design */
-@media (min-width: 768px) {
-  .__entrada-dados {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-
-  .__secao-cadastro {
-    grid-column: 1;
-  }
-
-  .__opcoes-relatorio {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   body {
-    padding: 0.75rem;
+    grid-template-columns: 1fr;
   }
 
-  .__input-el,
-  .__select-organizacao {
-    max-width: 100%;
+  .__entrada-dados {
+    position: static;
+  }
+
+  .__tabela-relatorio {
+    margin-top: 2rem;
   }
 }
 
@@ -173,8 +180,4 @@ body {
 :focus-visible {
   outline: 3px solid var(--purple-light);
   outline-offset: 2px;
-}
-
-[aria-busy="true"] {
-  opacity: 0.7;
 }

@@ -3,10 +3,10 @@
 // EXEMPLO OBJETO ALUNO PADRÃO
 // {
 //   nome: "Pedro Santos Nogueira", // Nome - string (passar .toUppercase())
-//   RA: "13649138726941782", // RA - string (transformar número em string)
+//   RA: "13649138726941782", // RA - número (manter número para funções de organização)
 //   idade: 26, // idade - número
 //   sexo: "MASCULINO", // sexo - string
-//   media: 7.3, // media = número (manter número para fazer calculos)
+//   media: 7.3, // media = número (manter número para calcular média)
 //   resultado: true, // resultado = boolean (media > 6 ? true : false)
 // },
 

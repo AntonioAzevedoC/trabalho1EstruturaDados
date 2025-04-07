@@ -1,7 +1,8 @@
 "use strict";
 
-import { arrAlunos } from "./dados.mjs";
+// import { arrAlunos } from "./dados.mjs";
 
+// Selecionando tabela
 const tabela = document.getElementById("__tabela");
 
 // Função para atualizar dados da tabela
@@ -14,7 +15,7 @@ const atualizarTabela = function (arr) {
 
   // Loop por array, adicionando eles à tabela
   for (const aluno of arr) {
-    // Gerando html por aluno
+    // Gerando HTML por aluno
     const html = `<tr class='__item-tabela'>
         <td>${aluno.nome}</td>
         <td>${aluno.RA}</td>
@@ -23,7 +24,7 @@ const atualizarTabela = function (arr) {
         <td>${aluno.media}</td>
         <td>${aluno.resultado ? "Aprovado(a)" : "Não aprovado(a)"}</td>
       </tr>`;
-    // Inserindo html à tabela
+    // Inserindo HTML à tabela
     tabela.insertAdjacentHTML("beforeend", html);
   }
 };

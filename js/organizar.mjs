@@ -45,17 +45,18 @@ const quickSortRaDecrescente = (el1, el2) => +el1.RA > +el2.RA;
 
 // Função para chamada de funções de organização
 export const ChamadaOrganizacao = function (e, ordem = "", situacao = "") {
+  // Lidando com dado ordem
   let selectOrdem =
     ordem === "" ? document.querySelector("#__select-ordem").value : ordem;
   let arrOrdem = selectOrdem.split("-");
+  let cresc = arrOrdem[0]; // Se ordem é crecente ou decrescente
+  let tipo = arrOrdem[1]; // Se ordem é por nome ou RA
 
+  // Lidando com dado situação
   let selectSituacao =
     situacao === ""
       ? document.querySelector("#__select-aprov").value
       : situacao;
-
-  let cresc = arrOrdem[0];
-  let tipo = arrOrdem[1];
 
   // Definindo que tipo de organização deve ser feita
   if (cresc === "Cresc" && tipo === "Nome")
@@ -78,12 +79,9 @@ export const ChamadaOrganizacao = function (e, ordem = "", situacao = "") {
   else if (selectSituacao === "Reprovados")
     atualizarTabela(arrAlunos.filter((a) => a.resultado === false));
 
-  // // Atualizando dados da última organização feita
-  // console.log("a", selectOrdem, "b", selectSituacao);
-
+  // Atualizando dados da última organização feita
   ultimoSort.push(selectOrdem, selectSituacao);
-  ultimoSort.splice(0, 2);
-  // console.log(ultimoSort);
+  ultimoSort.splice(0, 2); // Removendo dados originais
 };
 
 // Evento para clique de botão organizar chamando "chamadaOrganizacao"

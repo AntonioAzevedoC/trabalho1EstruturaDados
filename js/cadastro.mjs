@@ -43,5 +43,6 @@ document.querySelector(".__input-btn").addEventListener("click", function () {
   // console.log(...ultimoSort);/
   console.log(arrAlunos);
 
+  // Organizando tabela com o último tipo de organização, para adicionar o novo aluno
   ChamadaOrganizacao("e", ...ultimoSort);
 });
